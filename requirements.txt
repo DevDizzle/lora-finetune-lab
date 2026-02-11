@@ -1,0 +1,14 @@
+torch>=2.2.0
+transformers>=4.44.0
+peft>=0.13.0
+accelerate>=1.0.0
+bitsandbytes>=0.44.0
+datasets>=3.0.0
+trl>=0.12.0
+wandb>=0.18.0
+rouge-score>=0.1.2
+pyyaml>=6.0
+numpy>=1.26.0
+tqdm>=4.66.0
+sentencepiece>=0.2.0
+protobuf>=4.25.0

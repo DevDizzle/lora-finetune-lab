@@ -1,0 +1,32 @@
+# Model weights & checkpoints
+outputs/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Data
+data/
+
+# W&B
+wandb/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
