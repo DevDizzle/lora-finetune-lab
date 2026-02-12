@@ -15,10 +15,9 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
-    TrainingArguments,
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
-from trl import SFTTrainer
+from trl import SFTTrainer, SFTConfig
 import wandb
 
 # %% Load configs
@@ -145,9 +144,9 @@ peft_config = LoraConfig(
 model = get_peft_model(model, peft_config)
 model.print_trainable_parameters()
 
-# %% Training arguments
+# %% Training arguments (SFTConfig)
 tc = train_cfg["training"]
-training_args = TrainingArguments(
+training_args = SFTConfig(
     output_dir=tc["output_dir"],
     num_train_epochs=tc["num_train_epochs"],
     per_device_train_batch_size=tc["per_device_train_batch_size"],
@@ -170,6 +169,9 @@ training_args = TrainingArguments(
     max_grad_norm=tc["max_grad_norm"],
     report_to=tc["report_to"],
     seed=tc["seed"],
+    max_seq_length=MAX_SEQ_LEN,  # Moved here!
+    dataset_text_field="text",    # Explicitly set
+    packing=False                 # Default, but good to be explicit
 )
 
 # %% Initialize W&B
@@ -190,7 +192,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=eval_dataset,
     processing_class=tokenizer,
-    max_seq_length=MAX_SEQ_LEN,
+    # max_seq_length=MAX_SEQ_LEN,  <-- REMOVED (passed in args now)
 )
 
 print("Starting training...")
