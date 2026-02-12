@@ -79,7 +79,8 @@ def load_and_format(
 ) -> Dataset:
     """Load a HuggingFace dataset and format it for instruction tuning."""
     print(f"Loading {dataset_name} (split={split})...")
-    ds = load_dataset(dataset_name, split=split, trust_remote_code=True)
+    # FIX: Removed trust_remote_code=True
+    ds = load_dataset(dataset_name, split=split)
 
     if max_samples:
         ds = ds.select(range(min(max_samples, len(ds))))
