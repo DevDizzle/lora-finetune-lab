@@ -169,9 +169,9 @@ training_args = SFTConfig(
     max_grad_norm=tc["max_grad_norm"],
     report_to=tc["report_to"],
     seed=tc["seed"],
-    max_seq_length=MAX_SEQ_LEN,  # Moved here!
-    dataset_text_field="text",    # Explicitly set
-    packing=False                 # Default, but good to be explicit
+    max_length=MAX_SEQ_LEN,       # Changed from max_seq_length
+    dataset_text_field="text",
+    packing=False
 )
 
 # %% Initialize W&B
