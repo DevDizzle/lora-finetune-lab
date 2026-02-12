@@ -35,13 +35,14 @@ print(f"Max sequence length: {MAX_SEQ_LEN}")
 print(f"GPU available: {torch.cuda.is_available()}")
 if torch.cuda.is_available():
     print(f"GPU: {torch.cuda.get_device_name(0)}")
+    # FIX: Corrected typo 'total_memoryory' -> 'total_memory'
     print(f"VRAM: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
 
 # %% Load and prepare dataset
+# FIX: Removed trust_remote_code=True
 dataset = load_dataset(
     train_cfg["data"]["dataset_name"],
     split="train",
-    trust_remote_code=True,
 )
 
 if train_cfg["data"]["max_samples"]:
