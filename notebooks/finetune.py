@@ -168,7 +168,6 @@ training_args = TrainingArguments(
     gradient_checkpointing=tc["gradient_checkpointing"],
     optim=tc["optim"],
     max_grad_norm=tc["max_grad_norm"],
-    group_by_length=tc["group_by_length"],
     report_to=tc["report_to"],
     seed=tc["seed"],
 )
