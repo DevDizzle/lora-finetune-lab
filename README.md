@@ -97,19 +97,32 @@ lora-finetune-lab/
 
 ## Results
 
-> 🚧 **Results pending** — will be updated after first training run.
+**Run Date:** February 12, 2026
+**Hardware:** NVIDIA A100
+**Training Time:** ~3 hours (2h 59m 54s)
+**WandB Report:** [View Run Logs](https://wandb.ai/eraphaelparra-evanparra-ai/lora-finetune-lab/runs/0gxeyqwe)
 
-| Metric | Baseline | Fine-Tuned | Δ |
-|--------|----------|------------|---|
-| Perplexity | TBD | TBD | TBD |
-| ROUGE-L | TBD | TBD | TBD |
-| Task Accuracy | TBD | TBD | TBD |
+| Metric | Value | Notes |
+|--------|-------|-------|
+| **Eval Loss** | 1.187 | Low validation loss indicates good generalization |
+| **Eval Entropy** | 0.888 | Measure of prediction uncertainty |
+| **Token Accuracy** | 70.78% | Percentage of tokens predicted correctly |
+| **Train Loss** | 0.890 | Final training loss after 3 epochs |
+
+**Example Inference:**
+> **Instruction:** Write a python function to reverse a list.
+>
+> **Response:**
+> ```python
+> def reverse_list(lst):
+>    return lst[::-1]
+> ```
 
 **Training Details:**
 - Base model: `mistralai/Mistral-7B-v0.3`
 - Trainable parameters: ~4.2M / 7.2B (0.06%)
-- Training time: TBD
-- Hardware: TBD
+- Epochs: 3
+- Speed: 13.73 samples/sec (train), 61.35 samples/sec (eval)
 
 ## License
 
