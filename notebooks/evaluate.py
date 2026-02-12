@@ -69,10 +69,10 @@ model.eval()
 print("Model loaded successfully.")
 
 # %% Load evaluation dataset
+# FIX: Removed trust_remote_code=True
 dataset = load_dataset(
     train_cfg["data"]["dataset_name"],
     split="train",
-    trust_remote_code=True,
 )
 
 # Use the same split logic to get the eval portion
