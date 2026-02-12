@@ -109,6 +109,7 @@ print(f"\nSample formatted prompt:\n{train_dataset[0]['text'][:500]}")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"
+tokenizer.model_max_length = MAX_SEQ_LEN  # Set explicit limit here
 
 # %% Configure 4-bit quantization
 bnb_config = BitsAndBytesConfig(
@@ -170,7 +171,6 @@ training_args = SFTConfig(
     max_grad_norm=tc["max_grad_norm"],
     report_to=tc["report_to"],
     seed=tc["seed"],
-    max_seq_length=MAX_SEQ_LEN,   # Correct parameter for SFTConfig
     dataset_text_field="text",
     packing=False,
     group_by_length=tc["group_by_length"],
